@@ -4,6 +4,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "cSpell.words": [],
+  "cSpell.words": ["commitlint"],
   "cSpell.userWords": ["eslint", "stylelint"]
 }
