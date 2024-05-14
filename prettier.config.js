@@ -1,4 +1,4 @@
-export default {
+module.children = {
   printWidth: 80,
   tabWidth: 2,
   semi: false,

@@ -1,5 +1,5 @@
-import { FiberNode } from './fiber';
+import { FiberNode } from "./fiber";
 
 export const completeWork = (fiber: FiberNode) => {
-  console.log('completeWork', fiber);
+  console.log("completeWork", fiber);
 };

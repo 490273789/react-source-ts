@@ -1,18 +1,18 @@
-import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols';
+import { REACT_ELEMENT_TYPE } from "shared/ReactSymbols";
 import {
   Type,
   Key,
   Props,
   Ref,
   ReactElementType,
-  ElementType
-} from 'shared/ReactTypes';
+  ElementType,
+} from "shared/ReactTypes";
 
 const ReactElement = function (
   type: Type,
   key: Key,
   ref: Ref,
-  props: Props
+  props: Props,
 ): ReactElementType {
   const element = {
     $$typeof: REACT_ELEMENT_TYPE,
@@ -20,7 +20,7 @@ const ReactElement = function (
     key,
     ref,
     props,
-    __mark: 'nan'
+    __mark: "nan",
   };
 
   return element;
@@ -33,12 +33,12 @@ export const jsxDEV = (type: ElementType, config: any) => {
 
   for (const prop in config) {
     const val = config[prop];
-    if (prop === 'key') {
+    if (prop === "key") {
       if (val !== undefined) {
-        key = '' + val;
+        key = "" + val;
       }
     }
-    if (props === 'ref') {
+    if (props === "ref") {
       if (val !== undefined) {
         ref = val;
       }

@@ -1,7 +1,7 @@
-import { Key, Props, Ref } from 'shared/ReactTypes';
-import { WorkTag } from './workTags';
-import { Flags, NoFlags } from './fiberFlags';
-import { Container } from 'hostConfig';
+import { Key, Props, Ref } from "shared/ReactTypes";
+import { WorkTag } from "./workTags";
+import { Flags, NoFlags } from "./fiberFlags";
+import { Container } from "hostConfig";
 
 export class FiberNode {
   type: any;
@@ -73,7 +73,7 @@ export class FiberRootNode {
 
 export const createWorkingInProgress = (
   current: FiberNode,
-  pendingProps: Props
+  pendingProps: Props,
 ): FiberNode => {
   let wip = current.alternate;
   if (wip === null) {

@@ -1,7 +1,7 @@
-import { beginWork } from './beginWork';
-import { completeWork } from './completeWork';
-import { FiberNode, FiberRootNode, createWorkingInProgress } from './fiber';
-import { HostRoot } from './workTags';
+import { beginWork } from "./beginWork";
+import { completeWork } from "./completeWork";
+import { FiberNode, FiberRootNode, createWorkingInProgress } from "./fiber";
+import { HostRoot } from "./workTags";
 
 let workInProgress: FiberNode | null = null;
 
@@ -35,7 +35,7 @@ function renderRoot(root: FiberRootNode) {
       workLoop();
       break;
     } catch {
-      console.warn('workLoop 发生错误');
+      console.warn("workLoop 发生错误");
       workInProgress = null;
     }
   } while (true);
