@@ -1,7 +1,7 @@
-import { beginWork } from "./beginWork";
-import { completeWork } from "./completeWork";
-import { FiberNode, FiberRootNode, createWorkingInProgress } from "./fiber";
-import { HostRoot } from "./workTags";
+import { beginWork } from "./ReactFiberBeginWork";
+import { completeWork } from "./ReactFiberCompleteWork";
+import { FiberNode, FiberRootNode, createWorkingInProgress } from "./RactFiber";
+import { HostRoot } from "./ReactWorkTags";
 
 let workInProgress: FiberNode | null = null;
 
@@ -11,7 +11,7 @@ function prepareFreshStack(root: FiberRootNode) {
 
 export function scheduleUpdateOnFiber(fiber: FiberNode) {
   const root = markUpdateFromFiberToRoot(fiber);
-  renderRoot(root);
+  renderRootSync(root);
 }
 
 function markUpdateFromFiberToRoot(fiber: FiberNode) {
@@ -27,33 +27,34 @@ function markUpdateFromFiberToRoot(fiber: FiberNode) {
   return null;
 }
 
-function renderRoot(root: FiberRootNode) {
+function renderRootSync(root: FiberRootNode) {
   // 初始化
   prepareFreshStack(root);
   do {
     try {
-      workLoop();
+      workLoopSync();
       break;
     } catch {
-      console.warn("workLoop 发生错误");
+      console.warn("workLoopSync 发生错误");
       workInProgress = null;
     }
   } while (true);
 }
 
-function workLoop() {
+function workLoopSync() {
   while (workInProgress !== null) {
     performUnitOfWork(workInProgress);
   }
 }
 
 function performUnitOfWork(fiber: FiberNode) {
-  const next = beginWork(fiber);
+  const next = beginWork(fiber); // next 为子fiber
   fiber.memoizedProps = fiber.pendingProps;
-
+  // 没有子 fiber，遍历兄弟节点
   if (next === null) {
     completeUnitOfWork(fiber);
   } else {
+    // 有子fiber继续遍历子节点
     workInProgress = next;
   }
 }
@@ -71,5 +72,5 @@ function completeUnitOfWork(fiber: FiberNode) {
     node = node.return;
     workInProgress = node;
     // completeUnitOfWork(node);
-  } while (node != null);
+  } while (node !== null);
 }

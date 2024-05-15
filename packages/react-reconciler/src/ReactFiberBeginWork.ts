@@ -1,4 +1,4 @@
-import { FiberNode } from "./fiber";
+import { FiberNode } from "./RactFiber";
 
 /** 递归中的递 */
 export const beginWork = (fiber: FiberNode) => {
