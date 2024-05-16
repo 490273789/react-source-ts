@@ -10,10 +10,12 @@ export interface UpdateQueue<State> {
   };
 }
 
+/** 创建更新的数据结构 */
 export const createUpdate = <State>(action: Action<State>): Update<State> => ({
   action,
 });
 
+/** 创建消费更新的数据结构 */
 export const createUpdateQueue = <Action>() => {
   return {
     shared: {

@@ -56,3 +56,9 @@
 
 - 兼容上述的出发更新方式
 - 方便后续扩展（优先级机制）
+
+### 更新机制组成部分
+
+- 代表更新的数据结构 - Update
+- 消费更新的数据结构 - UpdateQueue
+  - updateQueue.shared.pending[update, update,update]
